@@ -1,7 +1,15 @@
-// import Search from "./Search";
+import Search from "./Search";
 import "../css/Header.css";
+import { useState } from "react";
 
 const Header = () => {
+  const [searchExpandState, setSearchExpandState] = useState(false);
+  const close = () => {
+    setSearchExpandState(false);
+  };
+  const open = () => {
+    setSearchExpandState(true);
+  };
   return (
     <header className="header my-3 ">
       <div className="container d-flex  align-items-center p-0">
@@ -15,11 +23,14 @@ const Header = () => {
             Add guests
           </div>
 
-          <button className="btn btn-outline-primary border-0  fs-5 me-3">
+          <button
+            className="btn btn-outline-primary border-0  fs-5 me-3"
+            onClick={() => open()}>
             <i className="bi bi-search "></i>
           </button>
         </div>
       </div>
+      <Search expanded={searchExpandState} onClose={() => close()} />
     </header>
   );
 };
