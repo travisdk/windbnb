@@ -1,4 +1,4 @@
-import SearchDropdown from "./SearchDropdown";
+import LocationDropdown from "./LocationDropdown";
 import "../css/Search.css";
 
 const Search = ({ expanded, onClose }) => {
@@ -16,10 +16,10 @@ const Search = ({ expanded, onClose }) => {
             className="row rounded-4 border border-1 align-items-center   "
             style={{ height: "55px" }}>
             <div className="col-4">
-              <SearchDropdown locations={locations} />
+              <LocationDropdown locations={locations} />
             </div>
             <div className="col-4">
-              <SearchDropdown locations={locations} />
+              <LocationDropdown locations={locations} />
             </div>
             <div className="col-4 d-flex justify-content-center">
               <button

@@ -1,0 +1,12 @@
+.location-dropdown-list {
+  max-height: 300px;
+  overflow: auto;
+  position: absolute;
+  top: 55px;
+}
+.location-dropdown-label {
+  position: absolute;
+  top: 5px;
+  left: 18px;
+  font-size: 9px;
+}
