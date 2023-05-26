@@ -1,6 +1,7 @@
-import Search from "./Search";
-import "../css/Header.css";
 import { useState } from "react";
+
+import Search from "./SearchModal";
+import "../css/Header.css";
 
 const Header = () => {
   const [searchExpandState, setSearchExpandState] = useState(false);

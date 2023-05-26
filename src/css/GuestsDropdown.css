@@ -1,10 +1,10 @@
-.location-dropdown-list {
+.guests-dropdown-list {
   max-height: 300px;
   overflow: auto;
   position: absolute;
-  top: 5px;
+  top: 55px;
 }
-.location-dropdown-label {
+.guests-dropdown-label {
   position: absolute;
   top: 5px;
   left: 18px;

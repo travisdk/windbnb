@@ -1,18 +1,22 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import "../css/LocationDropdown.css";
 
 // locations tages via Context sidenhen og stammer fra JSON fil i eksemplet
 // State globalt skal "også" holde på valgte/current location & antal guests for søgning - via action for filtrering
 
-const LocationDropdown = ({ locations = [] }) => {
+const LocationDropdown = ({
+  locations = [],
+  currentLocation,
+  setCurrentLocation,
+}) => {
+  // not DRY
   const initialLocation = {
     value: "",
     name: "",
   };
   const [shownLocations, setShownLocations] = useState(locations);
   const [textFilter, setTextFilter] = useState("");
-  const [currentLocation, setCurrentLocation] = useState(initialLocation);
 
   const onLocationClick = (value) => {
     const location = locations.find((loc) => loc.value === value);
@@ -55,20 +59,22 @@ const LocationDropdown = ({ locations = [] }) => {
           LOCATION
         </label>
       </div>
-      {shownLocations.length > 0 && (
-        <ul className="list-group location-dropdown-list">
-          {shownLocations.map((location) => (
-            <li className="list-group-item border-0" key={location.value}>
-              <a
-                href="#"
-                className="text-decoration-none text-dark"
-                onClick={() => onLocationClick(location.value)}>
-                {location.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="position-relative">
+        {shownLocations.length > 0 && (
+          <ul className="list-group location-dropdown-list">
+            {shownLocations.map((location) => (
+              <li className="list-group-item border-0" key={location.value}>
+                <a
+                  href="#"
+                  className="text-decoration-none text-dark"
+                  onClick={() => onLocationClick(location.value)}>
+                  {location.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
