@@ -88,7 +88,11 @@ const Provider = ({ children }) => {
     (guests) => dispatch({ type: "setCurrentGuests", payload: guests }),
     []
   );
+  const totalGuests = Number(
+    state.currentGuests.adults + state.currentGuests.children
+  );
 
+  // display placeholder text instead of zero.
   const value = useMemo(() => {
     return {
       state,
@@ -96,8 +100,16 @@ const Provider = ({ children }) => {
       filterStays,
       setCurrentLocation,
       setCurrentGuests,
+      totalGuests,
     };
-  }, [state, dispatch, filterStays, setCurrentLocation, setCurrentGuests]);
+  }, [
+    state,
+    dispatch,
+    filterStays,
+    setCurrentLocation,
+    setCurrentGuests,
+    totalGuests,
+  ]);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

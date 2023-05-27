@@ -1,19 +1,14 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import NumberInput from "./NumberInput";
 import "../css/GuestsDropdown.css";
 import handleBlur from "../functions/blur.js";
 import { useStaysContext } from "../context/StaysContext";
 
 const GuestsDropdown = () => {
-  const { state, setCurrentGuests } = useStaysContext();
+  const { state, setCurrentGuests, totalGuests } = useStaysContext();
   const { currentGuests } = state;
+  console.log(currentGuests, totalGuests);
   const [active, setActive] = useState(false);
-
-  const totalGuests = useMemo(() =>
-    Number(currentGuests.adults + currentGuests.children) > 0
-      ? Number(currentGuests.adults + currentGuests.children).toString()
-      : ""
-  ); // display placeholder text instead of zero.
 
   return (
     <div
@@ -25,7 +20,7 @@ const GuestsDropdown = () => {
           className="form-control rounded-3 px-3 pt-3 "
           placeholder="Add guests"
           id="guests-input"
-          value={totalGuests}
+          value={totalGuests > 0 ? totalGuests : ""}
           readOnly
           onFocus={() => setActive(true)}
         />

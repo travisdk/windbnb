@@ -26,7 +26,11 @@ const LocationDropdown = () => {
           type="text"
           className="form-control rounded-3 px-3 pt-3 "
           placeholder="Add location"
-          value={currentLocation.city + ", " + currentLocation.country}
+          value={
+            currentLocation.city.length > 0
+              ? currentLocation.city + ", " + currentLocation.country
+              : ""
+          }
           onFocus={() => setActive(true)}
           readOnly
         />

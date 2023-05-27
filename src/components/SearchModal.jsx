@@ -24,7 +24,6 @@ const Search = ({ expanded, onClose }) => {
             <div className="col-4">
               <GuestsDropdown />
             </div>
-
             <div className="col-4 d-flex justify-content-center">
               <button
                 type="button"
