@@ -2,8 +2,11 @@ import { useState } from "react";
 
 import Search from "./SearchModal";
 import "../css/Header.css";
-
+import { useStaysContext } from "../context/StaysContext";
 const Header = () => {
+  const { state } = useStaysContext();
+  const { currentLocation } = state;
+
   const [searchExpandState, setSearchExpandState] = useState(false);
   const close = () => {
     setSearchExpandState(false);
@@ -18,7 +21,13 @@ const Header = () => {
           <img src="../../res/logo.svg" alt="WindBnb logo" />
         </a>
         <div className="d-flex align-items-center border border-1 rounded-4  ms-auto">
-          <div className="mx-2  py-3 px-2">Helsinki, Finland</div>
+          {currentLocation.city.length > 0 ? (
+            <div className="mx-2  py-3 px-2">
+              {currentLocation.city}, {currentLocation.country}
+            </div>
+          ) : (
+            <div className="mx-2  py-3 px-2 text-muted">Add location</div>
+          )}
 
           <div className="mx-2 border-start border-end border-1 py-3 px-2 text-muted">
             Add guests

@@ -1,8 +1,11 @@
 .guests-dropdown-list {
   max-height: 300px;
-  overflow: auto;
+
   position: absolute;
   top: 55px;
+}
+.guests-dropdown-list .greyed {
+  color: #bdbdbd;
 }
 .guests-dropdown-label {
   position: absolute;

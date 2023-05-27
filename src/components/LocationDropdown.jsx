@@ -1,57 +1,34 @@
 import { useState } from "react";
-
+import handleBlur from "../functions/blur.js";
+import { useStaysContext } from "../context/StaysContext.jsx";
 import "../css/LocationDropdown.css";
 
-// locations tages via Context sidenhen og stammer fra JSON fil i eksemplet
-// State globalt skal "også" holde på valgte/current location & antal guests for søgning - via action for filtrering
+// locations are taken via Context later and originate from the JSON file in the example
+// State globally must "also" keep the selected/current location & number of guests for search
+// - via action for filtering
 
-const LocationDropdown = ({
-  locations = [],
-  currentLocation,
-  setCurrentLocation,
-}) => {
-  // not DRY
-  const initialLocation = {
-    value: "",
-    name: "",
-  };
-  const [shownLocations, setShownLocations] = useState(locations);
-  const [textFilter, setTextFilter] = useState("");
+const LocationDropdown = () => {
+  const { state, setCurrentLocation } = useStaysContext();
+  const { locations, currentLocation } = state;
 
-  const onLocationClick = (value) => {
-    const location = locations.find((loc) => loc.value === value);
-    if (location.value !== currentLocation.value) {
-      setCurrentLocation(location);
-      setTextFilter(location.name);
-    }
-  };
+  const [active, setActive] = useState(false);
 
-  const onLocationTextChange = (e) => {
-    const newVal = e.target.value;
-    const foundLocation = locations.find((loc) => loc.name === newVal);
-    if (foundLocation) {
-      setCurrentLocation(foundLocation); // typing in full name will set current location
-    } else {
-      setCurrentLocation(initialLocation); // clearing if non-valid location name
-    }
-    setTextFilter(newVal);
-    setShownLocations(
-      locations.filter(
-        (loc) => loc.name.toLowerCase().indexOf(newVal.toLowerCase()) > -1
-      )
-    );
+  const onLocationClick = (location) => {
+    setCurrentLocation(location);
   };
 
   return (
-    <div className="location-dropdown">
+    <div
+      className="location-dropdown "
+      onBlur={(e) => handleBlur(e, () => setActive(false))}>
       <div className="position-relative">
         <input
           type="text"
           className="form-control rounded-3 px-3 pt-3 "
           placeholder="Add location"
-          value={textFilter}
-          onChange={(e) => onLocationTextChange(e)}
-          id="location-input"
+          value={currentLocation.city + ", " + currentLocation.country}
+          onFocus={() => setActive(true)}
+          readOnly
         />
         <label
           htmlFor="location-input"
@@ -59,22 +36,32 @@ const LocationDropdown = ({
           LOCATION
         </label>
       </div>
-      <div className="position-relative">
-        {shownLocations.length > 0 && (
-          <ul className="list-group location-dropdown-list">
-            {shownLocations.map((location) => (
-              <li className="list-group-item border-0" key={location.value}>
-                <a
-                  href="#"
-                  className="text-decoration-none text-dark"
-                  onClick={() => onLocationClick(location.value)}>
-                  {location.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      {active && (
+        <div className="position-relative">
+          {locations.length > 0 && (
+            <ul className="list-group location-dropdown-list w-100">
+              {locations.map((location) => (
+                <li
+                  className="list-group-item border-0"
+                  key={location.city + "#" + location.country}>
+                  <a
+                    href="#"
+                    className="text-decoration-none text-dark"
+                    onClick={() =>
+                      onLocationClick({
+                        city: location.city,
+                        country: location.country,
+                      })
+                    }>
+                    <i className="bi bi-geo-alt-fill me-1"></i>
+                    {location.city}, {location.country}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
   );
 };

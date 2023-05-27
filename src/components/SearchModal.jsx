@@ -3,26 +3,12 @@ import { useState } from "react";
 import LocationDropdown from "./LocationDropdown";
 import "../css/SearchModal.css";
 import GuestsDropdown from "./GuestsDropdown";
-
+import { useStaysContext } from "../context/StaysContext";
 const Search = ({ expanded, onClose }) => {
-  // Not DRY
-  const initialLocation = {
-    value: "",
-    name: "",
-  };
-
-  const [currentLocation, setCurrentLocation] = useState(initialLocation);
-  const [currentGuestsNumber, setCurrentGuestsNumber] = useState(0);
-
-  // todo => JSON etc
-  const locations = [
-    { value: "HEL", name: "Helsinki, Finland" },
-    { value: "TUR", name: "Turku, Finland" },
-  ];
+  const { filterStays } = useStaysContext();
 
   const submitSearch = () => {
-    // State submit here .... => filter re both Location and Guests to be send as an action for state change.
-    // TODO
+    filterStays();
     onClose();
   };
   return (
@@ -30,20 +16,13 @@ const Search = ({ expanded, onClose }) => {
       <div className="blurry">
         <div className="search-container d-flex justify-content-center ">
           <div
-            className="row rounded-4 border border-1 align-items-center w-100"
+            className="row rounded-4 border border-1 align-items-center w-100 g-0"
             style={{ height: "55px", maxWidth: "1248px" }}>
             <div className="col-4 ">
-              <LocationDropdown
-                locations={locations}
-                currentLocation={currentLocation}
-                setCurrentLocation={setCurrentLocation}
-              />
+              <LocationDropdown />
             </div>
             <div className="col-4">
-              <GuestsDropdown
-                currentGuestsNumber={currentGuestsNumber}
-                setCurrentGuestsNumber={setCurrentGuestsNumber}
-              />
+              <GuestsDropdown />
             </div>
 
             <div className="col-4 d-flex justify-content-center">
