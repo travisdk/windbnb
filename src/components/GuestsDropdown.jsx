@@ -7,7 +7,6 @@ import { useStaysContext } from "../context/StaysContext";
 const GuestsDropdown = () => {
   const { state, setCurrentGuests, totalGuests } = useStaysContext();
   const { currentGuests } = state;
-  console.log(currentGuests, totalGuests);
   const [active, setActive] = useState(false);
 
   return (

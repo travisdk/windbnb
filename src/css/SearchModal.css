@@ -18,7 +18,6 @@
   top: 0;
   left: 0;
   background: white;
-  padding-top: 93px;
 }
 
 @media (max-width: 575px) {
@@ -28,4 +27,10 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+}
+
+.search-row {
+  height: 55px;
+  max-width: 1248px;
+  margin: 0 auto;
 }
