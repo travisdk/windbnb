@@ -20,3 +20,12 @@
   background: white;
   padding-top: 93px;
 }
+
+@media (max-width: 575px) {
+  .search-container {
+    height: 632px;
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

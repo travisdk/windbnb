@@ -32,8 +32,8 @@ const GuestsDropdown = () => {
       </div>
 
       {active && (
-        <div className="position-relative">
-          <div className="guests-dropdown-list w-100">
+        <div>
+          <div className="guests-dropdown-list w-100 ms-3">
             {/* Adults */}
             <div className="fw-bold">Adults</div>
             <div className="greyed">Ages 13 and and above</div>

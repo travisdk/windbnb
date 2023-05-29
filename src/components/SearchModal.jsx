@@ -1,9 +1,8 @@
-import { useState } from "react";
-
 import LocationDropdown from "./LocationDropdown";
 import "../css/SearchModal.css";
 import GuestsDropdown from "./GuestsDropdown";
 import { useStaysContext } from "../context/StaysContext";
+import SearchButton from "./SearchButton";
 const Search = ({ expanded, onClose }) => {
   const { filterStays } = useStaysContext();
 
@@ -14,26 +13,25 @@ const Search = ({ expanded, onClose }) => {
   return (
     expanded && (
       <div className="blurry">
-        <div className="search-container d-flex justify-content-center ">
+        <div className="search-container">
+          <div className="d-flex text-black justify-content-between justify-content-sm-end p-1">
+            <p className="d-sm-none">Edit your search</p>
+            <button
+              type="button"
+              className="btn btn-close"
+              onClick={onClose}></button>
+          </div>
           <div
-            className="row rounded-4 border border-1 align-items-center w-100 g-0"
+            className="row rounded-4 border border-1 justify-content-center align-items-center g-0 position-relative"
             style={{ height: "55px", maxWidth: "1248px" }}>
-            <div className="col-4 ">
+            <div className="col-12 col-sm-4 ">
               <LocationDropdown />
             </div>
-            <div className="col-4">
+            <div className="col-12 col-sm-4">
               <GuestsDropdown />
             </div>
-            <div className="col-4 d-flex justify-content-center">
-              <button
-                type="button"
-                className="btn btn-primary text-white "
-                style={{ minWidth: "128px", height: "48px" }}
-                onClick={submitSearch}>
-                <span>
-                  Search<i className="bi bi-search ms-2"></i>
-                </span>
-              </button>
+            <div className="col-12 col-sm-4 d-flex justify-content-center">
+              <SearchButton submitSearch={submitSearch} />
             </div>
           </div>
         </div>

@@ -41,30 +41,26 @@ const LocationDropdown = () => {
         </label>
       </div>
       {active && (
-        <div className="position-relative">
-          {locations.length > 0 && (
-            <ul className="list-group location-dropdown-list w-100">
-              {locations.map((location) => (
-                <li
-                  className="list-group-item border-0"
-                  key={location.city + "#" + location.country}>
-                  <a
-                    href="#"
-                    className="text-decoration-none text-dark"
-                    onClick={() =>
-                      onLocationClick({
-                        city: location.city,
-                        country: location.country,
-                      })
-                    }>
-                    <i className="bi bi-geo-alt-fill me-1"></i>
-                    {location.city}, {location.country}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        <ul className="list-group location-dropdown-list w-100">
+          {locations.map((location) => (
+            <li
+              className="list-group-item border-0"
+              key={location.city + "#" + location.country}>
+              <a
+                href="#"
+                className="text-decoration-none text-dark"
+                onClick={() =>
+                  onLocationClick({
+                    city: location.city,
+                    country: location.country,
+                  })
+                }>
+                <span className="material-icons me-1">location_on</span>
+                {location.city}, {location.country}
+              </a>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

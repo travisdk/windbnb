@@ -1,9 +1,15 @@
 .guests-dropdown-list {
   max-height: 300px;
-
   position: absolute;
   top: 55px;
 }
+
+@media (max-width: 575px) {
+  .guests-dropdown-list {
+    top: 200%;
+  }
+}
+
 .guests-dropdown-list .greyed {
   color: #bdbdbd;
 }

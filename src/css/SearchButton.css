@@ -1,0 +1,10 @@
+.search-btn {
+  min-width: 128px;
+  height: 48px;
+}
+
+@media (max-width: 575px) {
+  .search-btn {
+    margin-top: 300px;
+  }
+}

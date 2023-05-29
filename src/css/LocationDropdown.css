@@ -2,7 +2,12 @@
   max-height: 300px;
   overflow: auto;
   position: absolute;
-  top: 5px;
+  top: 55px;
+}
+@media (max-width: 575px) {
+  .location-dropdown-list {
+    top: 200%;
+  }
 }
 .location-dropdown-label {
   position: absolute;

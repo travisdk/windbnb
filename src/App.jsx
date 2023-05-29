@@ -1,21 +1,11 @@
 import "./css/App.css";
 import Header from "./components/Header";
-import { useStaysContext } from "./context/StaysContext";
+import StaysList from "./components/StaysList";
 function App() {
-  const { state } = useStaysContext();
-  const { filteredStays } = state;
-
   return (
     <div className="container">
       <Header />
-      {/* <StaysList /> */}
-      <div>
-        {filteredStays.map((stay) => (
-          <p key={stay.id}>
-            {stay.title} {stay.maxGuests} {stay.beds}
-          </p>
-        ))}
-      </div>
+      <StaysList />
     </div>
   );
 }
