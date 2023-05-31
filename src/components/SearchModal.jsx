@@ -23,7 +23,7 @@ const Search = ({ expanded, onClose }) => {
           </div>
           <div
             className="search-row 
-                  ps-2 pe-2 row rounded-4 border border-1 justify-content-center align-items-center g-0 position-relative">
+                  ps-2 pe-2 d-flex flex-wrap rounded-4  justify-content-center align-items-center g-0 position-relative">
             <div className="col-12 col-sm-4 ">
               <LocationDropdown />
             </div>

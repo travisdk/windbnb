@@ -1,0 +1,39 @@
+.stay {
+    font-size: 14px;
+}
+
+.stay-title {
+    font-family: "Montserrat";
+    font-weight: 600;
+    max-width: 95%;
+  }
+  
+  
+  .superhost {
+    font-size: 12px;
+    font-family: "Montserrat";
+    font-weight: 700;
+    border-radius: 12px;
+  }'
+  .stay-type {
+  
+      font-size: 12px;
+      font-family: "Montserrat";
+      color: #828282;
+      font-weight: 500;
+  }
+  
+  @media (min-width: 576px) {
+  .stay-photo {
+      height: 269px;
+      object-fit: cover;
+  }
+  
+  }
+  @media (max-width: 575px) {
+      .stay-photo {
+          height: 239px;
+          object-fit: cover;
+      }
+      
+  }

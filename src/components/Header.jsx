@@ -21,21 +21,21 @@ const Header = () => {
         <a href="#" className="navbar-brand">
           <img src={logo} className="my-3" alt="WindBnb logo" />
         </a>
-        <div className="info-row row align-items-center justify-content-end border border-1 rounded-4 mx-2 mx-sm-0  g-0 ">
-          <div className="col-6  py-3 px-3">
+        <div className="info-row row align-items-center rounded-4  g-0 mx-auto mx-sm-0">
+          <div className="col-6  py-3 px-2">
             {currentLocation.city.length > 0 ? (
               <div className="">
                 {currentLocation.city}, {currentLocation.country}
               </div>
             ) : (
-              <div className="text-muted">Add location</div>
+              <div className="greyed">Add location</div>
             )}
           </div>
-          <div className="col-4 py-3 px-3 border-start border-end border-1">
+          <div className="col-4 py-3 px-2 border-start border-end border-1">
             {totalGuests > 0 ? (
               <div className="">{totalGuests} guests</div>
             ) : (
-              <div className="text-muted">Add guests</div>
+              <div className="greyed">Add guests</div>
             )}
           </div>
           <div className="col-2 d-flex justify-content-center align-items-center  ">
