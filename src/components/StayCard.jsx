@@ -12,7 +12,7 @@ const StayCard = ({ stay }) => {
             <div className="">
               {stay.superHost && (
                 <span className="px-2 py-1 me-1  bg-white border border-1 border-black superhost">
-                  SUPER HOST
+                  SUPER HOST x
                 </span>
               )}
               <span>{stay.type}</span>
