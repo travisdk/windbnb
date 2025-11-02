@@ -3,6 +3,8 @@
 A simple React and Vite web project inspired by Airbnb, built as a frontend exercise to explore component-based UI, responsive layouts, and state handling.  
 Originally created as part of a course and later extended for further learning and experimentation.
 
+Live site: https://travisdk.github.io/windbnb/
+
 ## 🚀 Tech Stack
 - React (functional components with Hooks)  
 - Vite (development server and build tool)  
